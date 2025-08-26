@@ -12,7 +12,10 @@ export default function VerificationList() {
   const fetchVerifications = async () => {
     try {
       const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/verification/pending`);
-      setVerifications(res.data);
+      // Avoid duplicates
+      setVerifications(Array.from(new Set(res.data.map(v => v._id))).map(id => 
+        res.data.find(v => v._id === id)
+      ));
     } catch (err) {
       console.error('Error fetching verifications:', err);
     }
@@ -35,29 +38,74 @@ export default function VerificationList() {
 
             {/* ID Front */}
             {v.idFront && (
-              <img
-                src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${v.idFront}`}
-                alt="ID Front"
-                className="w-full h-32 object-cover mt-2 rounded"
-              />
+              <div>
+                <p><strong>ID Front:</strong></p>
+                <img
+                  src={v.idFront}
+                  alt="ID Front"
+                  className="w-full h-32 object-cover mt-2 rounded"
+                />
+              </div>
             )}
 
             {/* License Front */}
             {v.licenseFront && (
-              <img
-                src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${v.licenseFront}`}
-                alt="License Front"
-                className="w-full h-32 object-cover mt-2 rounded"
-              />
+              <div>
+                <p><strong>License Front:</strong></p>
+                <img
+                  src={v.licenseFront}
+                  alt="License Front"
+                  className="w-full h-32 object-cover mt-2 rounded"
+                />
+              </div>
             )}
 
             {/* License Back */}
             {v.licenseBack && (
-              <img
-                src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${v.licenseBack}`}
-                alt="License Back"
-                className="w-full h-32 object-cover mt-2 rounded"
-              />
+              <div>
+                <p><strong>License Back:</strong></p>
+                <img
+                  src={v.licenseBack}
+                  alt="License Back"
+                  className="w-full h-32 object-cover mt-2 rounded"
+                />
+              </div>
+            )}
+
+            {/* Vehicle Registration */}
+            {v.vehicleRegistration && (
+              <div>
+                <p><strong>Vehicle Registration:</strong></p>
+                <img
+                  src={v.vehicleRegistration}
+                  alt="Vehicle Registration"
+                  className="w-full h-32 object-cover mt-2 rounded"
+                />
+              </div>
+            )}
+
+            {/* Insurance */}
+            {v.insurance && (
+              <div>
+                <p><strong>Insurance:</strong></p>
+                <img
+                  src={v.insurance}
+                  alt="Insurance"
+                  className="w-full h-32 object-cover mt-2 rounded"
+                />
+              </div>
+            )}
+
+            {/* Profile Image */}
+            {v.profileImage && (
+              <div>
+                <p><strong>Profile Image:</strong></p>
+                <img
+                  src={v.profileImage}
+                  alt="Profile"
+                  className="w-full h-32 object-cover mt-2 rounded"
+                />
+              </div>
             )}
 
             <div className="flex gap-2 mt-3">
