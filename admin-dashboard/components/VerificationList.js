@@ -1,4 +1,3 @@
-// components/VerificationList.js
 'use client';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -15,7 +14,7 @@ export default function VerificationList() {
       const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/verification/pending`);
       setVerifications(res.data);
     } catch (err) {
-      console.error(err);
+      console.error('Error fetching verifications:', err);
     }
   };
 
@@ -33,7 +32,34 @@ export default function VerificationList() {
           <div key={v._id} className="border p-4 rounded-lg bg-gray-50">
             <h3 className="font-medium">{v.fullName}</h3>
             <p className="text-sm text-gray-600">License: {v.licenseNumber}</p>
-            <img src={v.idFront?.trim()} alt="ID" className="w-full h-32 object-cover mt-2 rounded" />
+
+            {/* ID Front */}
+            {v.idFront && (
+              <img
+                src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${v.idFront}`}
+                alt="ID Front"
+                className="w-full h-32 object-cover mt-2 rounded"
+              />
+            )}
+
+            {/* License Front */}
+            {v.licenseFront && (
+              <img
+                src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${v.licenseFront}`}
+                alt="License Front"
+                className="w-full h-32 object-cover mt-2 rounded"
+              />
+            )}
+
+            {/* License Back */}
+            {v.licenseBack && (
+              <img
+                src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${v.licenseBack}`}
+                alt="License Back"
+                className="w-full h-32 object-cover mt-2 rounded"
+              />
+            )}
+
             <div className="flex gap-2 mt-3">
               <button
                 onClick={() => handleAction(v._id, 'approved')}
@@ -53,4 +79,4 @@ export default function VerificationList() {
       )}
     </div>
   );
-} 
+}
