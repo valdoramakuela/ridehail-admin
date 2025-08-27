@@ -1,4 +1,4 @@
-# eas.json (for both apps)
+
 {
   "cli": {
     "version": ">= 5.2.0"
