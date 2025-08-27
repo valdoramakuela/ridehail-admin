@@ -1,0 +1,50 @@
+{
+  "expo": {
+    "name": "RideHail Driver",
+    "slug": "ridehail-driver",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yourcompany.ridehail.driver",
+      "infoPlist": {
+        "NSLocationAlwaysUsageDescription": "This app needs location access to find nearby ride requests and navigate to passengers.",
+        "NSLocationWhenInUseUsageDescription": "This app needs location access to find nearby ride requests.",
+        "NSCameraUsageDescription": "This app needs camera access to take photos of verification documents.",
+        "NSPhotoLibraryUsageDescription": "This app needs photo library access to upload verification documents."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.yourcompany.ridehail.driver",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE"
+      ]
+    },
+    "plugins": [
+      "expo-location",
+      "expo-notifications",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to upload verification documents."
+        }
+      ]
+    ]
+  }
+}
