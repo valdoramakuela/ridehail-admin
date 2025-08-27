@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "RideHail Rider",
+    "slug": "ridehail-rider", 
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yourcompany.ridehail.rider",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "This app needs location access to show your pickup location for rides."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png", 
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.yourcompany.ridehail.rider",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ]
+    },
+    "plugins": [
+      "expo-location",
+      "expo-notifications"
+    ]
+  }
+}
